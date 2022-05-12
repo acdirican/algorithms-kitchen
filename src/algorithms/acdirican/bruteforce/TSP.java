@@ -38,29 +38,7 @@ import java.util.List;
 
 public class TSP {
 	
-	public static int permutations(char[] arr, int current) {
-		
-		if (current == arr.length) {
-			System.out.println(arr);
-			return 1;
-		}
-		
-		int n =0 ;
-		for(int i=current; i<arr.length; i++) {
-			swap(arr, current, i);
-			n += permutations(arr, current + 1);
-			swap(arr, i, current);
-		}
-		
-		return n;
-		
-	}
-	public static void swap(char[] arr, int current, int i) {
-		char temp = arr[current];
-		arr[current] = arr[i];
-		arr[i] = temp;
-		
-	}
+	
 
 	private static List<Integer> tsp(int[][] adj, int node, List<Integer> visited) {
 		if (visited.contains(node)) {
