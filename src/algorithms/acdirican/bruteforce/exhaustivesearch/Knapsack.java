@@ -1,4 +1,4 @@
-package algorithms.acdirican.bruteforce;
+package algorithms.acdirican.bruteforce.exhaustivesearch;
 
 /**
  * This class includes the brute force solution of Knapsack problem.

@@ -1,4 +1,4 @@
-package algorithms.acdirican.bruteforce;
+package algorithms.acdirican.bruteforce.exhaustivesearch;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
