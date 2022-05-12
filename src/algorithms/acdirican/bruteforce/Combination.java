@@ -5,9 +5,22 @@ public class Combination {
 		return printCombinations(arr, new int[arr.length], 0, arr.length-1,0, r);
 	}
 	
+	/**
+	 *                					arr[start]  +  f(start + 1 , end, current + 1 , r)
+	 *                					arr[start + 1]   +  f(start + 2 , end, current + 1, r) 
+	 * f(arr, start, end, current, r) = ...
+	 *                					arr[start + end]   +  f(start + (end+1) , end, current + 1, r) 
+	 * @param arr
+	 * @param data
+	 * @param start
+	 * @param end
+	 * @param current
+	 * @param r
+	 * @return
+	 */
 	private static int printCombinations(int[] arr, int[] data, int start, int end, int current,
 			int r) {
-		// Current combination is ready to be printed, print it
+		//Data is filled with a combination 
 		if (current == r) {
 			for (int j = 0; j < r; j++) {
 				System.out.print(data[j] + " ");
@@ -16,12 +29,11 @@ public class Combination {
 			return 1;
 		}
 
-		// replace index with all possible elements. The condition
-		// "end-i+1 >= r-index" makes sure that including one element
-		// at index will make a combination with remaining elements
-		// at remaining positions
+		/*
+		 * Fill the data's 'current' element with the arr' next elementi then make the recursive call to fill the rest of the data 
+		 */
 		int n = 0;
-		for (int i = start; i <= end && end - i + 1 >= r - current; i++) {
+		for (int i = start; i<=end && (end - i + 1) >= r - current; i++) {
 			data[current] = arr[i];
 			n += printCombinations(arr, data, i + 1, end, current + 1, r);
 		}
@@ -30,7 +42,14 @@ public class Combination {
 	}
 	
 	public static void main(String[] args) {
-		int[] arr = {1,2,3,4};
-		printCombinations(arr, 2);
+		int[] arr = {1,2,3,4,5};
+		int n = arr.length;
+		for (int r = 1; r <=5; r++) {
+			System.out.println("* C(" + n + ", " + r + ")");
+			int c = printCombinations(arr, r);
+			System.out.println("total:" + c);
+			System.out.println("---------");
+		}
+		
 	}
 }
